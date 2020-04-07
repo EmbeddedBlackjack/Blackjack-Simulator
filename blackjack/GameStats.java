@@ -91,7 +91,7 @@ public class GameStats extends Game {
     	String csv_outfile_dir= "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\";
     	//
     	GameStats bj_game_stat;
-    	csv_infile_dir += "data_stat\\";
+    	csv_infile_dir += "data_in_stat\\";
     	csv_outfile_dir += "MB_data_in\\";
     	int tot_num_of_strategies = 12; 			// 12 strategies
     	int tot_runs = 20000;						// 20000 sim runs per strategy

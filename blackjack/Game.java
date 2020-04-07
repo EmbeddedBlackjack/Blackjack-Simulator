@@ -407,7 +407,7 @@ public class Game {
     		break;
     	default: // MEMBRAIN is default so complier doesn't complain...
     	case MEMBRAIN:
-    		csv_infile_dir += "data_stat\\";
+    		csv_infile_dir += "data_in_stat\\";
     		csv_outfile_dir += "MB_data_in\\";
     		int tot_num_of_strategies = 10; 	// 10 strategies
     		bj_game = new Game(csv_infile_dir,csv_outfile_dir,tot_num_of_strategies); 
