@@ -59,7 +59,8 @@ public class Reader {
         String s = "";
         for (int irow = 0; irow < num_of_rows; irow++)
         	for (int icol = 0; icol < num_of_cols; icol++)
-        		s += (" " + data[irow][icol]);
+				s += (data[irow][icol] + ",");
+			s += "\n";
         return s;
     }
 	
@@ -77,7 +78,7 @@ public class Reader {
 		System.out.println();
 		System.out.println(csv_reader);
 		System.out.println();
-		System.out.println(csv_reader.get_policy(18,10));
+		System.out.println("Action at (18,10)=" + csv_reader.get_policy(18,10));
 	}  
 	
 }
