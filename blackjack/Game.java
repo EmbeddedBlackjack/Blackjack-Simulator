@@ -129,7 +129,7 @@ public class Game {
      * Public calls -------------------------------------------------
      */
     public Game() {
-    	// TODO
+    	// Needed since GameStats inheritances Game, so Game() is needed
     }
     
     /**
