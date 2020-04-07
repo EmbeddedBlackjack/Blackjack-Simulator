@@ -67,7 +67,7 @@ public class Reader {
      * Test client --------------------------------------------------
      */
 	public static void main(String[] args) throws Exception {
-		String csv_file = "C:\\Users\\munis\\Documents\\_code\\Blackjack\\Blackjack-Simulator\\basic_hard.csv";
+		String csv_file = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\basic_hard.csv";
 		Reader csv_reader = new Reader(csv_file,29,11);
 		System.out.println("rows = " + csv_reader.num_of_rows + " cols = " + csv_reader.num_of_cols);
 		System.out.println();

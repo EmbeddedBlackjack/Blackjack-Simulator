@@ -87,8 +87,8 @@ public class GameStats extends Game {
      * Test client --------------------------------------------------
      */
     public static void main(String[] args) throws Exception {
-    	String csv_infile_dir = "C:\\Users\\munis\\Documents\\_code\\Blackjack\\Blackjack-Simulator\\";
-    	String csv_outfile_dir= "C:\\Users\\munis\\Documents\\_code\\Blackjack\\Blackjack-Simulator\\";
+    	String csv_infile_dir = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\";
+    	String csv_outfile_dir= "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\";
     	//
     	GameStats bj_game_stat;
     	csv_infile_dir += "data_stat\\";

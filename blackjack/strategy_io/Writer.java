@@ -120,7 +120,7 @@ public class Writer {
      * Test client --------------------------------------------------
      */	
 	public static void main(String[] args) throws Exception {
-		String csv_file = "C:\\Users\\munis\\Documents\\_code\\Blackjack\\Blackjack-Simulator\\basic_hard_hist_out.csv";
+		String csv_file = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\basic_hard_hist_out.csv";
 		//
 		CONSTS_IO.WRITER_TYPE type = CONSTS_IO.WRITER_TYPE.MEMBRAIN; // select tester
 		//
@@ -147,7 +147,7 @@ public class Writer {
 			icols = (270 + 1); 		// hard strategy columns plus 1 for output
 			csv_writer.MB_add_header(icols);
 			for (int i = 0; i < num_of_strategies; i++) {
-				String csv_file2 = "C:\\Users\\munis\\Documents\\_code\\Blackjack\\Blackjack-Simulator\\data_stat\\"+i+".csv";
+				String csv_file2 = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\data_stat\\"+i+".csv";
 				Reader csv_reader = new Reader(csv_file2,29,11);
 				csv_reader.read();
 				csv_reader.close();
