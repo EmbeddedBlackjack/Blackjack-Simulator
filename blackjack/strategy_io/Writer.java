@@ -26,6 +26,9 @@ public class Writer {
     /*
      * Public calls -------------------------------------------------
      */
+	public Writer(String csv_file) throws Exception {
+		ps = new PrintStream(new File(csv_file));
+	}
 	public Writer(String csv_file, int num_of_rows) throws Exception {
 		ps = new PrintStream(new File(csv_file));
 		this.num_of_rows = num_of_rows;
@@ -42,6 +45,7 @@ public class Writer {
 	 * @param action  action taken by player
 	 */
 	public void add_move(Player player, int iplayer, String action) {
+		assert data != null;
 		data[iplayer] += action;
 		switch (action) {
 		case "H":
@@ -54,7 +58,10 @@ public class Writer {
 	/**
 	 * Finalizes the data and puts it in the raw csv file.
 	 */
-	public void write_moves() {for (int i = 0; i < num_of_rows; i++) ps.println(data[i]);} 
+	public void write_moves() {
+		assert data != null;
+		for (int i = 0; i < num_of_rows; i++) ps.println(data[i]);
+	} 
 	
 	// Type 2 write: serves as input to MemBrain NN -----------------
 	/**
@@ -63,6 +70,7 @@ public class Writer {
 	 * @param icols  number of inputs to MemBrain NN
 	 */
 	public void MB_add_header(int icols) {
+		assert data != null;
 		for (int icol = 0; icol < icols; icol++) {	//   sets size for next rows
 			if ((icols-1) == icol) {data[0] += "Out,\n";} 
 			else                   {data[0] += ("In" + icol + ",");}
@@ -78,6 +86,7 @@ public class Writer {
 	 * @param stat  output to MemBrain NN
 	 */
 	public void MB_add_stat(String[][] strategy_table, int irow, int icols, String strategy, double stat) {
+		assert data != null;
 		int jrow = 1;
 		int jcol = 1;
 		for (int icol = 0; icol < icols; icol++) { 
@@ -97,6 +106,18 @@ public class Writer {
 	 * Finalizes the data and puts it in the raw csv file.
 	 */
 	public void MB_write() {write_moves();}
+
+	// Type 3 write: output result of single game play --------------
+	/**
+	 * Direct data stream to csv_file
+	 * 
+	 * @param igame  Game number
+	 * @param iplayer  Player number (or index)
+	 * @param profit  Player ith profit from game number
+	 */
+	public void game_add_result(int igame, int iplayer, double profit) {
+		ps.println("" + igame + "," + iplayer + "," + profit + ",\n");
+	}
 	
 	/**
 	 * Make sure to call this to close file after done.
@@ -105,12 +126,13 @@ public class Writer {
 	
 	// For debugging ------------------------------------------------
 	public void print_data() {
+		assert data != null;
 		for (int i = 0; i < num_of_rows; i++) {
 			System.out.println(data[i]); 
 		}
 	}
 	public void print_data_from_file(String csv_file, int num_of_cols) throws Exception {
-		Reader csv_reader = new Reader(csv_file,(num_of_rows+1),num_of_cols);
+		Reader csv_reader = new Reader(csv_file,(num_of_rows),num_of_cols);
 		csv_reader.read();
 		csv_reader.close();
 		System.out.println(csv_reader);
@@ -122,7 +144,7 @@ public class Writer {
 	public static void main(String[] args) throws Exception {
 		String csv_file = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\basic_hard_hist_out.csv";
 		//
-		CONSTS_IO.WRITER_TYPE type = CONSTS_IO.WRITER_TYPE.MEMBRAIN; // select tester
+		CONSTS_IO.WRITER_TYPE type = CONSTS_IO.WRITER_TYPE.TIME1; // select tester
 		//
 		Writer csv_writer;
 		int icols;
@@ -147,7 +169,7 @@ public class Writer {
 			icols = (270 + 1); 		// hard strategy columns plus 1 for output
 			csv_writer.MB_add_header(icols);
 			for (int i = 0; i < num_of_strategies; i++) {
-				String csv_file2 = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\data_stat\\"+i+".csv";
+				String csv_file2 = "C:\\Users\\munis\\Documents\\_code\\EmbeddedBlackjack\\Blackjack-Simulator\\data_in_stat\\"+i+".csv";
 				Reader csv_reader = new Reader(csv_file2,29,11);
 				csv_reader.read();
 				csv_reader.close();
@@ -159,6 +181,7 @@ public class Writer {
 			break;
 		}
 		csv_writer.close();
+		System.out.println();
 		System.out.println("Data print raw");
 		csv_writer.print_data();
 		System.out.println();
