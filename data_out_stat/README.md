@@ -1,0 +1,1 @@
+# Holds data output per player and strategy for one csv file
