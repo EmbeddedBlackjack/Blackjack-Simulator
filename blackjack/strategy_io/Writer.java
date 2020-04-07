@@ -116,7 +116,7 @@ public class Writer {
 	 * @param profit  Player ith profit from game number
 	 */
 	public void game_add_result(int igame, int iplayer, double profit) {
-		ps.println("" + igame + "," + iplayer + "," + profit + ",\n");
+		ps.println("" + igame + "," + iplayer + "," + profit + ",");
 	}
 	
 	/**
