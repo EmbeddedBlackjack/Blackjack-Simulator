@@ -1,5 +1,0 @@
-<dependency>
-  <groupId>tech.tablesaw</groupId>
-  <artifactId>tablesaw-core</artifactId>
-  <version>0.37.2</version>
-</dependency>
