@@ -108,6 +108,9 @@ public class Writer {
 	public void MB_write() {write_moves();}
 
 	// Type 3 write: output result of single game play --------------
+	public void game_add_header() {
+		ps.println("game,player,profit,");
+	}
 	/**
 	 * Direct data stream to csv_file
 	 * 

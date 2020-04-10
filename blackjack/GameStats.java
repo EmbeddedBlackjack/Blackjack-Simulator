@@ -78,8 +78,9 @@ public class GameStats extends Game {
 	public void gamestats_N_sim(int N, int istrategy) {
 		assert istrategy >= 0 && istrategy <= number_of_strategies;
 		emp_expected_profit[istrategy] = 0; // reset for new calc
+		gamestats_add_header(0,istrategy);	// default: 1 player
 		for (int i = 0; i < N; i++) {
-			game_reset_money(0); // default: 1 player
+			game_reset_money(0); 			// default: 1 player
 			game_init();
 			game_sim(istrategy);
 			game_status();
@@ -91,6 +92,10 @@ public class GameStats extends Game {
 	}
 	
 	//
+	public void gamestats_add_header(int iplayer, int istrategy) { 
+		assert iplayer >= 0 && iplayer <= this.num_of_players;
+		gameplay_writer[iplayer+istrategy].game_add_header(); 
+	}
 	public void gamestats_add_gameplay(int igame, int iplayer, int istrategy, double profit) {
 		assert iplayer >= 0 && iplayer <= this.num_of_players;
 		gameplay_writer[iplayer+istrategy].game_add_result(igame,iplayer,profit);
