@@ -124,8 +124,8 @@ public class GameStats extends Game {
     	GameStats bj_game_stat;
     	csv_infile_dir += "data_in_stat\\";
 		csv_outfile_dir += "data_out_stat\\";
-    	int tot_num_of_strategies = 12; 			// 12 strategies
-    	int tot_runs = 20000;						// 20000 sim runs per strategy
+    	int tot_num_of_strategies = 13; 			// 12 strategies
+    	int tot_runs = 200000;						// 20000 sim runs per strategy
     	//
     	bj_game_stat = new GameStats(csv_infile_dir,csv_outfile_dir, csv_MB_infile_dir,tot_num_of_strategies); 
     	bj_game_stat.game_MB_add_header();
